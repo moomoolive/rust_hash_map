@@ -2,6 +2,8 @@
 
 A simple hash map implemented in rust, all code is found in code/src/main.rs
 
+Even if you don't know Rust there are A LOT of comments, so it should be easy enough to follow.
+
 If you don't have rustup downloaded you can just copy source and [paste code here](https://play.rust-lang.org/) to test.
 
 ### Overview
