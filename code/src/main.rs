@@ -58,8 +58,20 @@ impl HMap {
         if hash < 0 {
             return None
         }
+        let target_bucket_index = hash as usize;
+        let mut doesExist = false;
+        for e in &self.buckets[target_bucket_index] {
+            if &e.key == k {
+                doesExist = true;
+                break
+            }
+        }
+        // if key exists do not overwrite
+        if doesExist {
+            return None
+        }
         let new_value = HashMapEntry { key: String::from(k), value: v };
-        self.buckets[hash as usize].push(new_value);
+        self.buckets[target_bucket_index].push(new_value);
         return Some(0)
     }
 
@@ -135,5 +147,16 @@ mod test {
         let mut map = HMap::new();
         map.insert(key, val);
         assert_eq!(None, map.get_key(key))
+    }
+
+    #[test]
+    fn inserting_with_key_that_already_exists_fails() {
+        let val = 7;
+        let key = &"blah";
+        let mut map = HMap::new();
+        map.insert(key, val);
+        // same key, new value
+        map.insert(key, 5);
+        assert_eq!(val, map.get_key(key).unwrap())
     }
 }
