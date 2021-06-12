@@ -59,14 +59,14 @@ impl <T: Clone> HashMap <T> {
     }
 
     fn create_hash(&self, s: &str) -> usize {
-        let mut sum: i64 = 0;
+        let mut sum = 0;
         let mut factor = 1;
         for (i, byte) in s.as_bytes().iter().enumerate() {
             factor = if i % 2 == 0 { 1 } else { factor * 256 };
             let casted_byte = *byte as i64;
             sum += casted_byte * factor;
         }
-        return (sum % self.buffer_capacity() as i64) as usize
+        return sum as usize % self.buffer_capacity()
     }
 
     fn valid_next_index(&self, i: usize) -> usize {
