@@ -1,22 +1,8 @@
-# rust_hash_map
+# Rust Hash Map
 
-A simple hash map implemented in rust, all code is found in code/src/main.rs
-
-Even if you don't know Rust there are A LOT of comments, so it should be easy enough to follow.
+A simple hash map implemented in rust, all code is found in code/src/
 
 If you don't have rustup downloaded you can just copy source and [paste code here](https://play.rust-lang.org/) to test.
-
-### Overview
-
-Hashing function takes string as input: --> gets first character, casts to to lowercase ASCII, then if it's an alphabetic character it returns an integer corresponding to the order of the letter in the English alphabet (between 0 - 25), otherwise it returns -1;
-
-Implementation of the hashmap is an array of 26 (corresponding to number of letters in english alphabet) arrays. The index of each array corresponds to it's ordering in the English Alphabet for example 0 corresponds to 'a', 2 corresponds to 'c'.
-
-This implementation is a little too simple and has some obvious downsides:
--> very quickly efficency will drop because there just aren't many unique hashes.
-
-A more advanced version of this could use the first two letters of the key as a hash value. The downsides of this would be:
--> more memory.
 
 ## Commands
 
@@ -29,3 +15,14 @@ Run tests
 ```
 cargo test
 ```
+
+
+### Overview
+
+This is a simple implemenation of a hash map (or hash table) in rust, collision resolution strategy employed is [liner probing](https://en.wikipedia.org/wiki/Linear_probing#:~:text=Linear%20probing%20is%20a%20scheme,associated%20with%20a%20given%20key.&text=Along%20with%20quadratic%20probing%20and,a%20form%20of%20open%20addressing.).
+
+The implementation has many limitations, mostly because I was too lazy to extend it's functionality 😅. Some limitations include:
+
+* Hash map buffer will not resize if max capacity is met
+* Keys cannot be overwritten, but must be removed then re-inserted
+* Collision strategy is very simple, which makes lookup performance for all hashes dip severely the more collisions encountered
