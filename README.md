@@ -19,7 +19,7 @@ cargo test
 
 ### Overview
 
-This is a simple implemenation of a hash map (or hash table) in rust, collision resolution strategy employed is [liner probing](https://en.wikipedia.org/wiki/Linear_probing#:~:text=Linear%20probing%20is%20a%20scheme,associated%20with%20a%20given%20key.&text=Along%20with%20quadratic%20probing%20and,a%20form%20of%20open%20addressing.).
+This is a simple implemenation of a hash map (or hash table) in rust, collision resolution strategy employed is [linear probing](https://en.wikipedia.org/wiki/Linear_probing#:~:text=Linear%20probing%20is%20a%20scheme,associated%20with%20a%20given%20key.&text=Along%20with%20quadratic%20probing%20and,a%20form%20of%20open%20addressing.).
 
 The implementation has many limitations, mostly because I was too lazy to extend it's functionality 😅. Some limitations include:
 
